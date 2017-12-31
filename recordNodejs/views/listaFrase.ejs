@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+ <link href="/recordEnglish/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container">
+		<div id="listaDeFrases">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Frase em inglês</th>
+						<th>Frase em Português</th>
+						
+					</tr>
+				</thead>
+				<tr th:each="frase : ${frases}">
+					<td><span th:text="${frase.fraseIngles}"></span></td>
+					<td><span th:text="${frase.frasePortugues}"></span></td>
+					
+				</tr>
+			</table>
+		</div>
+		<a href="/recordEnglish/adicionaFrase/"><button type="submit" class="btn btn-primary">Adicionar</button></a>
+		<a href="/recordEnglish/"><button type="submit" class="btn btn-primary">Voltar</button></a>
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="/recordEglish/bootstrap/js/bootstrap.min.js"></script>
+	</body>
+</html>
