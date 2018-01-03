@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+
+<html >
 <head>
 <meta charset="UTF-8" />
 <title>Insert title here</title>
- <link href="/recordEnglish/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
 	<div class="container">
@@ -16,18 +16,23 @@
 						
 					</tr>
 				</thead>
-				<tr th:each="frase : ${frases}">
-					<td><span th:text="${frase.fraseIngles}"></span></td>
-					<td><span th:text="${frase.frasePortugues}"></span></td>
-					
-				</tr>
+				
+				<% for(var i=0; i < frase.length; i++) {%>
+					<tr>
+						<td><%= frase[i].frase_ingles %></td>
+						<td><%= frase[i].frase_portugues %></td>
+					</tr>	
+				<% } %>	
+				
+				
 			</table>
 		</div>
-		<a href="/recordEnglish/adicionaFrase/"><button type="submit" class="btn btn-primary">Adicionar</button></a>
-		<a href="/recordEnglish/"><button type="submit" class="btn btn-primary">Voltar</button></a>
+
+		<a href="/adicionaFrase"><button type="submit" class="btn btn-primary">Adicionar</button></a>
+		<a href="/"><button type="submit" class="btn btn-primary">Voltar</button></a>
 	</div>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="/recordEglish/bootstrap/js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 	</body>
 </html>
