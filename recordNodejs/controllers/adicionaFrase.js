@@ -32,7 +32,7 @@ module.exports = function(app) {
         };
 
 
-        console.log('cachorro');
+        
 
         var connection = app.bancoDeDados.dbConnection();
        var frasesDAO = new app.bancoDeDados.FrasesDAO(connection);
