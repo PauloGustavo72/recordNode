@@ -23,12 +23,16 @@ module.exports = function(app) {
 
 		
 		user.autenticar(dadosForm, function(err, results){
-			console.log(results);
 			if(results){	
+
+			
 
 				req.session.autenticado = true;
 
-				req.session.id = results[0].id;
+
+				req.session.idUser = results[0].id;
+				
+				
 			
 			}if(req.session.autenticado = true){
 			

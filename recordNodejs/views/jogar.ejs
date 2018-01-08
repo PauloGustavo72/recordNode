@@ -1,0 +1,59 @@
+<html >
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+ <link href="css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container">
+		<div id="listaDeFrases">
+			<table class="table table-hover">
+				
+				 	
+				<div class="container">
+
+					<% if(validacao.length > 0){ %>
+						<div class="alert alert-danger">
+							<strong>Atenção</strong>
+							<ul>
+								
+									<li><%= validacao %></li>
+								
+							</ul>
+						</div>
+					<% } %>
+
+				
+
+			<% for(var i=0; i < frase.length; i++) {%>
+				
+				<div class="form-group">
+					<label for="disabledTextInput">Frase em Inglês:</label> <br>
+					<label for="disabledTextInput"><%= frase[i].frase_ingles %></label>
+				</div>
+
+
+				
+				<form action="/comparar" method="post">
+
+				
+					
+					
+						
+						<input type="text" name="frase_portugues">
+		  	<% } %>	
+
+		 				
+			</table>
+		</div>
+						<button type="submit" class="btn btn-primary">Adicionar</button>
+						<a href="/"><button type="button" class="btn btn-primary">Voltar</button></a>		
+				
+					</form>
+		
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>

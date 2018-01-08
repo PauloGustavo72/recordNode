@@ -9,7 +9,7 @@ module.exports = function(app) {
        var connection = app.bancoDeDados.dbConnection();
        var frasesDAO = new app.bancoDeDados.FrasesDAO(connection);
 
-       frasesDAO.listaFrases(function(err, results){
+       frasesDAO.listaFrases(req, function(err, results){
        		res.render('listaFrase', {frase : results} );
        		
        	});

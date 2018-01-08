@@ -5,9 +5,13 @@ module.exports = function(app) {
 
 	app.get('/adicionaFrase', function(req, res){
 
-     
-		  res.render('adicionaFrase', {validacao : {}, frase : {} });
-	});
+      if(req.session.autenticado){
+        
+        res.render('adicionaFrase', {validacao : {}, frase : {} });
+	   }else{
+        res.render('home', {validacao : {}});
+     }
+  });
 
 
 
@@ -34,11 +38,12 @@ module.exports = function(app) {
 
         
 
-        var connection = app.bancoDeDados.dbConnection();
-       var frasesDAO = new app.bancoDeDados.FrasesDAO(connection);
+          var connection = app.bancoDeDados.dbConnection();
+          var frasesDAO = new app.bancoDeDados.FrasesDAO(connection);
 
-       frasesDAO.adicionarFrase(frase, function(err, results){
-       		res.redirect('/listaFrase');
+          frasesDAO.adicionarFrase(req, frase, function(err, results){
+       		
+          res.redirect('/listaFrase');
        });
        
        
