@@ -9,7 +9,7 @@ module.exports = function(app) {
         
         res.render('adicionaFrase', {validacao : {}, frase : {} });
 	   }else{
-        res.render('home', {validacao : {}});
+        res.render('home', {validacao : {}, erros : {}});
      }
   });
 

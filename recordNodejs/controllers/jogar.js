@@ -4,7 +4,7 @@ module.exports = function(app) {
 	 var respostaCerta = '';
 
 	app.get('/jogar', function(req, res){
-		
+    if(req.session.autenticado){		
 		    var connection = app.bancoDeDados.dbConnection();
         var frasesDAO = new app.bancoDeDados.FrasesDAO(connection);
         
@@ -28,7 +28,9 @@ module.exports = function(app) {
         	
         	res.render('jogar', {frase : results, req : req.session.resultadoResposta  });	
         });
-
+    }else{
+        res.render('home', {validacao : {}, erros : {}});
+    }    
 		
       	
   });
@@ -37,35 +39,23 @@ module.exports = function(app) {
 
 	app.post('/comparar', function(req, res){
 		
-		var frase = req.body;
-
-		/*
-		req.assert('frase_ingles','Frase em inglês é obrigatória').notEmpty();
-
-        req.assert('frase_portugues','Frase em português é obrigatória').notEmpty();
-
-
-        var erros = req.validationErrors();
-
-
-        if(erros){
-
-          res.render('adicionaFrase', {validacao : erros, frase : frase });
-          return;
-        };*/
-
-        
-        if(frase.frase_portugues == respostaCerta){
-          req.session.resultadoResposta = true;
-			    res.redirect('/jogar');
-			    return;
-			 
-		    }else{
-          req.session.resultadoResposta = false;
-    			res.redirect('/jogar' );
-    			return;
-		}
-		
+    if(req.session.autenticado){
+  		    var frase = req.body;
+         
+          
+          if(frase.frase_portugues == respostaCerta){
+            req.session.resultadoResposta = true;
+  			    res.redirect('/jogar');
+  			    return;
+  			 
+  		    }else{
+            req.session.resultadoResposta = false;
+      			res.redirect('/jogar' );
+      			return;
+  		    }
+		}else{
+        res.render('home', {validacao : {}, erros : {}});
+    }
       	
   });
 

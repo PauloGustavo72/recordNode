@@ -23,7 +23,7 @@ module.exports = function(app) {
 
 		
 		user.autenticar(dadosForm, function(err, results){
-			console.log(results);
+			
 			if(results == ''){	
 
 				

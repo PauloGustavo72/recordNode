@@ -5,7 +5,7 @@ module.exports = function(app) {
 		if(req.session.autenticado){
 			res.render('menu');
 		}else{
-			res.render('home', {validacao : {}});
+			res.render('home', {validacao : {}, erros : {}});
 		}
 		
 		});

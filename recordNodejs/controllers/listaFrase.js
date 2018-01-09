@@ -5,14 +5,17 @@ module.exports = function(app) {
    
 
    app.get('/listaFrase',function(req, res) {
-        
-       var connection = app.bancoDeDados.dbConnection();
-       var frasesDAO = new app.bancoDeDados.FrasesDAO(connection);
+		if(req.session.autenticado){        
+       		var connection = app.bancoDeDados.dbConnection();
+       		var frasesDAO = new app.bancoDeDados.FrasesDAO(connection);
 
-       frasesDAO.listaFrases(req, function(err, results){
-       		res.render('listaFrase', {frase : results} );
+       		frasesDAO.listaFrases(req, function(err, results){
+       			res.render('listaFrase', {frase : results} );
        		
-       	});
-       connection.end();
+       		});
+       		connection.end();
+    	}else{
+    		res.render('home', {validacao : {}, erros : {}});
+    	}
     });
 }
