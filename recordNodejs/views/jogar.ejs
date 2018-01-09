@@ -37,7 +37,7 @@
 
 
 		<div id="listaDeFrases">
-			<table class="table table-hover">
+			
 				
 				 	
 				<div class="container">
@@ -58,28 +58,41 @@
 			<% for(var i=0; i < frase.length; i++) {%>
 				
 				<div class="form-group">
-					<label for="disabledTextInput">Frase em Inglês:</label> <br>
-					<label for="disabledTextInput"><%= frase[i].frase_ingles %></label>
+					<label for="disabledTextInput"><h3>Frase em Inglês:</h3></label> <br>
+					<label for="disabledTextInput"> <h4> <%= frase[i].frase_ingles %></h4></label>
 				</div>
 
-
+			<% } %>		
 				
-				<form action="/comparar" method="post">
-
 				
-					
-					
-						
-						<input type="text" name="frase_portugues">
-		  	<% } %>	
 
-		 				
-			</table>
+				<div>
+					<form action="/comparar" method="post">
+
+					
+						<h3>Escolha a tradução correta:</h3>
+							
+							
+							
+
+
+								
+
+								<% for(var i = 0; i < 2; i++){%>	
+									<input type="submit" class="btn btn-default" name="resposta" value = <%= respostaAleatoria[i].frase_portugues %>> <br><br>
+
+									
+				  				<% } %>
+
+				  					<input type="submit" class="btn btn-default" name="resposta" value = <%= frase[0].frase_portugues %>> <br><br>
+			 		</form>		
+			
+			</div>
+
 		</div>
-						<button type="submit" class="btn btn-primary">Adicionar</button>
-						<a href="/menu"><button type="button" class="btn btn-primary">Voltar</button></a>		
+						
 				
-					</form>
+					
 		
 	</div>
 	<script

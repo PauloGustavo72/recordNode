@@ -25,8 +25,13 @@ module.exports = function(app) {
           }
 
            
+
+          frasesDAO.frasesAleatorioas(req, results[0].id, function(err, re){
+            
+            res.render('jogar', {frase : results, req : req.session.resultadoResposta, respostaAleatoria : re  });    
+          });
         	
-        	res.render('jogar', {frase : results, req : req.session.resultadoResposta  });	
+        	
         });
     }else{
         res.render('home', {validacao : {}, erros : {}});
@@ -41,9 +46,8 @@ module.exports = function(app) {
 		
     if(req.session.autenticado){
   		    var frase = req.body;
-         
           
-          if(frase.frase_portugues == respostaCerta){
+          if(frase.resposta == respostaCerta){
             req.session.resultadoResposta = true;
   			    res.redirect('/jogar');
   			    return;
