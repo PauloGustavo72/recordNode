@@ -13,7 +13,7 @@ module.exports = function(app) {
 		var erros = req.validationErrors();
 
 		if(erros){
-			res.render('home', {validacao : erros})
+			res.render('home', {validacao : erros, erros : {}});
 			return;
 		}
 
@@ -23,24 +23,27 @@ module.exports = function(app) {
 
 		
 		user.autenticar(dadosForm, function(err, results){
-			if(results){	
+			console.log(results);
+			if(results == ''){	
 
+				
+				res.render('home', {validacao : [], erros : 'Usuário ou senha invalidos'});
+
+				return;
+				
+				
 			
-
+			}if(results){
+				
 				req.session.autenticado = true;
 
 
 				req.session.idUser = results[0].id;
+			}
+			if(req.session.autenticado = true){
 				
-				
-			
-			}if(req.session.autenticado = true){
-			
 				res.redirect('menu');
 			
-			}else{
-				
-				res.render('home', {validacao : []});
 			}
 			
 		});

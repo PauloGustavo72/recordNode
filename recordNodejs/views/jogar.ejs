@@ -12,12 +12,12 @@
 				 	
 				<div class="container">
 
-					<% if(validacao.length > 0){ %>
+					<% if(req.length > 0){ %>
 						<div class="alert alert-danger">
 							<strong>Atenção</strong>
 							<ul>
 								
-									<li><%= validacao %></li>
+									<li><%= req %></li>
 								
 							</ul>
 						</div>
@@ -47,7 +47,7 @@
 			</table>
 		</div>
 						<button type="submit" class="btn btn-primary">Adicionar</button>
-						<a href="/"><button type="button" class="btn btn-primary">Voltar</button></a>		
+						<a href="/menu"><button type="button" class="btn btn-primary">Voltar</button></a>		
 				
 					</form>
 		

@@ -40,7 +40,7 @@
 		<nav class="navbar navbar-default navbar-static-top">
 			<div class="container">
 
-				<% if(validacao.length > 0){ %>
+				<% if(validacao.length > 0 ){ %>
 					<div class="alert alert-danger">
 						<strong>Atenção!</strong>
 						<ul>
@@ -58,7 +58,23 @@
 						<button type="submit" class="btn btn-success">Entrar</button>
 						<button type="button" class="btn btn-info" id = "btn_cadastro">Cadastro</button>
 					</div>
+				
+			
+
+				<% if(erros.length > 0 ){ %>
+					<div class="alert alert-danger">
+						<strong>Atenção!</strong>
+						<ul>
+							
+								<li><%= erros %></li>
+							
+						</ul>
+					</div>
+				<% } %>
+
 				</form>
+
+
 			</div>
 			
 		</nav>

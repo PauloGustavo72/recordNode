@@ -20,7 +20,7 @@ UserDAO.prototype.adicionaUser = function(usuario, callback){
 
 UserDAO.prototype.autenticar = function(usuario, callback){
 	
-	this._connection.query( 'SELECT * FROM  user WHERE username = ? ' , [usuario.usuario], callback);
+	this._connection.query( 'SELECT * FROM  user WHERE username = ? and password = ? ' , [usuario.usuario, usuario.senha], callback);
 	
 
 

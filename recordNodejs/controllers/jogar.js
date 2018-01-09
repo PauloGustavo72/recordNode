@@ -13,19 +13,20 @@ module.exports = function(app) {
         	
         	respostaCerta = results[0].frase_portugues;
 
-          console.log(req.session.resultadoResposta );
           
-          if(req.session.resultadoResposta){
+          if(req.session.resultadoResposta == true){
             req.session.resultadoResposta = 'acertou';
-          }else if(req.session.resultadoResposta = 'undefined'){
+          
+          }else if(req.session.resultadoResposta == undefined){
             req.session.resultadoResposta = '';
+          
           }else{
             req.session.resultadoResposta = 'errou';
           }
 
            
         	
-        	res.render('jogar', {frase : results, validacao : req.session.resultadoResposta  });	
+        	res.render('jogar', {frase : results, req : req.session.resultadoResposta  });	
         });
 
 		

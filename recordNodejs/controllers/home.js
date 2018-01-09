@@ -4,7 +4,7 @@ module.exports = function(app) {
 	app.get('/', function(req, res){
 
      
-		  res.render('home', {validacao : {} } );
+		  res.render('home', {validacao : {}, erros : {} } );
 	});
 
 }
