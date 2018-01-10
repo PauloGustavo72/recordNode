@@ -1,3 +1,4 @@
+var sortJsonArray = require('sort-json-array');
 
 module.exports = function(app) {
    	
@@ -28,7 +29,19 @@ module.exports = function(app) {
 
           frasesDAO.frasesAleatorioas(req, results[0].id, function(err, re){
             
-            res.render('jogar', {frase : results, req : req.session.resultadoResposta, respostaAleatoria : re  });    
+
+            var teste = [
+                {"frase_portugues" : re[0].frase_portugues}, 
+                {"frase_portugues" : re[1].frase_portugues}, 
+                {"frase_portugues" : results[0].frase_portugues}
+            ]
+
+            sortJsonArray(teste, 'frase_portugues', 'asc' );
+            
+
+            connection.end();
+            console.log("resulradp : " + req.session.resultadoResposta);            
+            res.render('jogar', {frase : results, req : req.session.resultadoResposta, respostaAleatoria : teste  });    
           });
         	
         	

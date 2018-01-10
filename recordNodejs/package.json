@@ -15,6 +15,7 @@
     "express": "^4.14.0",
     "express-session": "^1.15.6",
     "express-validator": "2.12.1",
-    "mysql": "^2.15.0"
+    "mysql": "^2.15.0",
+    "sort-json-array": "^0.1.7"
   }
 }

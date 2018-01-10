@@ -2,7 +2,8 @@
 <head>
 <meta charset="UTF-8" />
 <title>Insert title here</title>
- <link href="css/bootstrap.min.css" rel="stylesheet" />
+ 	<link href="css/bootstrap.min.css" rel="stylesheet" />
+ 	<link href="css/cor-bootstrap.css" rel="stylesheet" />
 <script src="/js/jquery-2.2.1.js"></script>
 
 	<script>
@@ -16,6 +17,7 @@
 	</script>
 
 
+	
 </head>
 
 
@@ -24,7 +26,7 @@
 		
 
 
-		<nav class="navbar navbar-default navbar-static-top">
+		<nav class="navbar navbar-default navbar-static-top ">
 			<div class="container">
 				<div class="form-group sair">
 					<button type="button" class="btn btn-info pull-right" id="btn_sair">Sair</button>
@@ -42,14 +44,15 @@
 				 	
 				<div class="container">
 
-					<% if(req.length > 0){ %>
+					<% if(req == "acertou"){ %>
+						<div class="alert alert-danger cor-bootstrap">
+							<strong>Parabéns você acertou !!!</strong>
+							
+						</div>
+					<% } else{ %>
 						<div class="alert alert-danger">
-							<strong>Atenção</strong>
-							<ul>
-								
-									<li><%= req %></li>
-								
-							</ul>
+							<strong>Errou dessa vez, mas na próxima você acerta!</strong>
+							
 						</div>
 					<% } %>
 
@@ -72,19 +75,18 @@
 					
 						<h3>Escolha a tradução correta:</h3>
 							
-							
-							
+				
+							<%for(var i = 0; i < respostaAleatoria.length; i++) {%>	
+								<input type="submit" class="btn btn-default" name="resposta" value = "<%= respostaAleatoria[i].frase_portugues %>"> <br><br>
+											
+							<%}%>
+				  				
 
-
-								
-
-								<% for(var i = 0; i < 2; i++){%>	
-									<input type="submit" class="btn btn-default" name="resposta" value = <%= respostaAleatoria[i].frase_portugues %>> <br><br>
-
+					  			
+				  					
 									
-				  				<% } %>
-
-				  					<input type="submit" class="btn btn-default" name="resposta" value = <%= frase[0].frase_portugues %>> <br><br>
+									
+										
 			 		</form>		
 			
 			</div>

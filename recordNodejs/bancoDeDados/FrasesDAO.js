@@ -26,7 +26,7 @@ FrasesDAO.prototype.buscaPorId = function(id, callback){
 
 FrasesDAO.prototype.frasesAleatorioas = function(req, id, callback){
 	
-	this._connection.query('select * from frases where id != ? and user_id = ? limit 2' , [id, req.session.idUser], callback);
+	this._connection.query('select * from frases where id != ? and user_id = ? order by rand() limit 2' , [id, req.session.idUser], callback);
 	
 }
 
